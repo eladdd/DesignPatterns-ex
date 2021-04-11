@@ -1,0 +1,18 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using FacebookWrapper.ObjectModel;
+
+namespace FaceBookApp.Logic
+{
+    public class SortByDate<TTT> : IStartegySorter<TTT>
+        where TTT : Post
+    {
+        public IEnumerable<TTT> Sort(IEnumerable<TTT> i_Input)
+        {
+            IEnumerable<TTT> sort =
+                from obj in i_Input orderby obj?.CreatedTime descending select obj;
+
+            return sort;
+        }
+    }
+}
